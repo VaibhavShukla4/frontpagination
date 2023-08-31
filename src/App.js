@@ -89,12 +89,12 @@ import {
   MdOutlineKeyboardArrowLeft,
 } from "react-icons/md";
 import "./App.css";
-
+import { SerialIdFunction } from "./SerialIdFunction";
 const App = () => {
   const [items, setItems] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
-
+  const itemsPerPage = 8;
   useEffect(() => {
     fetchItems(currentPage);
   }, [currentPage]);
@@ -134,11 +134,32 @@ const App = () => {
 
   return (
     <div className="main">
-      <ul>
-        {items.map((item) => (
-          <li key={item.id}>{item.name}</li>
-        ))}
-      </ul>
+      <table>
+        <thead>
+          <tr>
+            <th>Index</th>
+            <th>Items</th>
+          </tr>
+        </thead>
+        <tbody>
+          {items.length > 0 ? (
+            items.map((item, index) => (
+              <tr key={index}>
+                <td>
+                  {SerialIdFunction(
+                    (currentPage - 1) * itemsPerPage + index + 1
+                  )}
+                </td>
+                <td>{item.name}</td>
+              </tr>
+            ))
+          ) : (
+            <tr>
+              <td>No Data</td>
+            </tr>
+          )}
+        </tbody>
+      </table>
       <div className="pagination-container">
         {currentPage > 1 && (
           <span
