@@ -57,7 +57,7 @@
 }
 .non-active-btn {
   width: 25px;
-  height: 25px;
+  height: 24px;
   border-radius: 50%;
   color: black;
   text-align: center;
@@ -75,4 +75,10 @@
 
 .pagination-container > span {
   cursor: pointer;
+}
+
+.pagination-container > .span-btn:hover {
+  background: #3574f2;
+  color: #fff;
+  border-radius: 50%;
 }

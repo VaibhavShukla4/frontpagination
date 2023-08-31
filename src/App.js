@@ -199,7 +199,11 @@ const App = () => {
       </ul>
       <div className="pagination-container">
         {currentPage > 1 && (
-          <span style={{ display: "flex" }} onClick={handlePrevPage}>
+          <span
+            className="span-btn"
+            style={{ display: "flex" }}
+            onClick={handlePrevPage}
+          >
             <MdOutlineKeyboardArrowLeft fontSize={25} />
           </span>
         )}
@@ -212,7 +216,9 @@ const App = () => {
             return (
               <span
                 className={`${
-                  currentPage === page ? "active-btn" : "non-active-btn"
+                  currentPage === page
+                    ? "active-btn"
+                    : "non-active-btn span-btn"
                 }`}
                 key={page}
                 onClick={() => handlePageClick(page)}
@@ -233,7 +239,11 @@ const App = () => {
           return null;
         })}
         {currentPage < totalPages && (
-          <span style={{ display: "flex" }} onClick={handleNextPage}>
+          <span
+            className="span-btn"
+            style={{ display: "flex" }}
+            onClick={handleNextPage}
+          >
             <MdOutlineKeyboardArrowRight fontSize={25} />
           </span>
         )}
