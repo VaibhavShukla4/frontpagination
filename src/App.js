@@ -4,64 +4,6 @@
 //   MdOutlineKeyboardArrowRight,
 //   MdOutlineKeyboardArrowLeft,
 // } from "react-icons/md";
-// const App = () => {
-//   const [items, setItems] = useState([]);
-//   const [currentPage, setCurrentPage] = useState(1);
-//   const [totalPages, setTotalPages] = useState(1);
-
-//   useEffect(() => {
-//     fetchItems(currentPage);
-//   }, [currentPage]);
-
-//   const fetchItems = async (page) => {
-//     try {
-//       const response = await axios.get(
-//         `http://localhost:3000/api/items?page=${page}`
-//       );
-//       setItems(response.data.items);
-//       setTotalPages(response.data.totalPages);
-//     } catch (error) {
-//       console.error("Error fetching items:", error);
-//     }
-//   };
-
-//   const handleNextPage = () => {
-//     if (currentPage < totalPages) {
-//       setCurrentPage(currentPage + 1);
-//     }
-//   };
-
-//   const handlePrevPage = () => {
-//     if (currentPage > 1) {
-//       setCurrentPage(currentPage - 1);
-//     }
-//   };
-
-//   return (
-//     <div>
-//       <ul>
-//         {items.map((item) => (
-//           <li key={item.id}>{item.name}</li>
-//         ))}
-//       </ul>
-//       <button onClick={handlePrevPage}>
-//         <MdOutlineKeyboardArrowLeft />
-//       </button>
-//       <button onClick={handleNextPage}>
-//         <MdOutlineKeyboardArrowRight />
-//       </button>
-//     </div>
-//   );
-// };
-
-// export default App;
-
-// import React, { useState, useEffect } from "react";
-// import axios from "axios";
-// import {
-//   MdOutlineKeyboardArrowRight,
-//   MdOutlineKeyboardArrowLeft,
-// } from "react-icons/md";
 // import "./App.css";
 // const App = () => {
 //   const [items, setItems] = useState([]);
@@ -199,7 +141,11 @@ const App = () => {
       </ul>
       <div className="pagination-container">
         {currentPage > 1 && (
-          <span style={{ display: "flex" }} onClick={handlePrevPage}>
+          <span
+            className="span-btn"
+            style={{ display: "flex" }}
+            onClick={handlePrevPage}
+          >
             <MdOutlineKeyboardArrowLeft fontSize={25} />
           </span>
         )}
@@ -212,7 +158,9 @@ const App = () => {
             return (
               <span
                 className={`${
-                  currentPage === page ? "active-btn" : "non-active-btn"
+                  currentPage === page
+                    ? "active-btn"
+                    : "non-active-btn span-btn"
                 }`}
                 key={page}
                 onClick={() => handlePageClick(page)}
@@ -233,7 +181,11 @@ const App = () => {
           return null;
         })}
         {currentPage < totalPages && (
-          <span style={{ display: "flex" }} onClick={handleNextPage}>
+          <span
+            className="span-btn"
+            style={{ display: "flex" }}
+            onClick={handleNextPage}
+          >
             <MdOutlineKeyboardArrowRight fontSize={25} />
           </span>
         )}
